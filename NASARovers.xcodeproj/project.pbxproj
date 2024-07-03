@@ -15,6 +15,9 @@
 		6C04D6DD2C35E42100A5C22B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6DC2C35E42100A5C22B /* APIError.swift */; };
 		6C04D6DF2C35E49100A5C22B /* APIDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6DE2C35E49100A5C22B /* APIDataProvider.swift */; };
 		6C04D6E22C35E4BC00A5C22B /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6E12C35E4BC00A5C22B /* Rover.swift */; };
+		6C04D6E62C35FEBA00A5C22B /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C04D6E52C35FEBA00A5C22B /* Config.plist */; };
+		6C04D6E82C3601ED00A5C22B /* APIEndpointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6E72C3601ED00A5C22B /* APIEndpointProvider.swift */; };
+		6C04D6EA2C36158F00A5C22B /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6E92C36158F00A5C22B /* Manifest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		6C04D6DC2C35E42100A5C22B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		6C04D6DE2C35E49100A5C22B /* APIDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataProvider.swift; sourceTree = "<group>"; };
 		6C04D6E12C35E4BC00A5C22B /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
+		6C04D6E52C35FEBA00A5C22B /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		6C04D6E72C3601ED00A5C22B /* APIEndpointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpointProvider.swift; sourceTree = "<group>"; };
+		6C04D6E92C36158F00A5C22B /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
 		8FF658E95EAFFA437D7B273B /* Pods_NASARovers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NASARovers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29A7625A893582769E2D5FD /* Pods-NASARovers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NASARovers.debug.xcconfig"; path = "Target Support Files/Pods-NASARovers/Pods-NASARovers.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,7 +55,6 @@
 				C29A7625A893582769E2D5FD /* Pods-NASARovers.debug.xcconfig */,
 				4B60D9626A127B39497FA7AB /* Pods-NASARovers.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -74,12 +79,11 @@
 		6C04D6CC2C35E1AF00A5C22B /* NASARovers */ = {
 			isa = PBXGroup;
 			children = (
+				6C04D6E32C35E74400A5C22B /* Application */,
 				6C04D6E02C35E4A500A5C22B /* Services */,
 				6C04D6DB2C35E40C00A5C22B /* Models */,
-				6C04D6CD2C35E1AF00A5C22B /* NASARoversApp.swift */,
+				6C04D6E42C35E75C00A5C22B /* SupportingFiles */,
 				6C04D6CF2C35E1AF00A5C22B /* ContentView.swift */,
-				6C04D6D12C35E1B100A5C22B /* Assets.xcassets */,
-				6C04D6D32C35E1B100A5C22B /* Preview Content */,
 			);
 			path = NASARovers;
 			sourceTree = "<group>";
@@ -97,6 +101,7 @@
 			children = (
 				6C04D6DC2C35E42100A5C22B /* APIError.swift */,
 				6C04D6E12C35E4BC00A5C22B /* Rover.swift */,
+				6C04D6E92C36158F00A5C22B /* Manifest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,8 +110,27 @@
 			isa = PBXGroup;
 			children = (
 				6C04D6DE2C35E49100A5C22B /* APIDataProvider.swift */,
+				6C04D6E72C3601ED00A5C22B /* APIEndpointProvider.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		6C04D6E32C35E74400A5C22B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				6C04D6CD2C35E1AF00A5C22B /* NASARoversApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		6C04D6E42C35E75C00A5C22B /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				6C04D6D32C35E1B100A5C22B /* Preview Content */,
+				6C04D6D12C35E1B100A5C22B /* Assets.xcassets */,
+				6C04D6E52C35FEBA00A5C22B /* Config.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		D20294F2D2F00EEDD5BCB03F /* Frameworks */ = {
@@ -178,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C04D6D52C35E1B100A5C22B /* Preview Assets.xcassets in Resources */,
+				6C04D6E62C35FEBA00A5C22B /* Config.plist in Resources */,
 				6C04D6D22C35E1B100A5C22B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,10 +256,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C04D6EA2C36158F00A5C22B /* Manifest.swift in Sources */,
 				6C04D6E22C35E4BC00A5C22B /* Rover.swift in Sources */,
 				6C04D6D02C35E1AF00A5C22B /* ContentView.swift in Sources */,
 				6C04D6CE2C35E1AF00A5C22B /* NASARoversApp.swift in Sources */,
 				6C04D6DD2C35E42100A5C22B /* APIError.swift in Sources */,
+				6C04D6E82C3601ED00A5C22B /* APIEndpointProvider.swift in Sources */,
 				6C04D6DF2C35E49100A5C22B /* APIDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
