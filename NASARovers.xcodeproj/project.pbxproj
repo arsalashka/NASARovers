@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B262783864CD0F77644739E /* Pods_NASARovers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FF658E95EAFFA437D7B273B /* Pods_NASARovers.framework */; };
 		6C04D6CE2C35E1AF00A5C22B /* NASARoversApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6CD2C35E1AF00A5C22B /* NASARoversApp.swift */; };
 		6C04D6D02C35E1AF00A5C22B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6CF2C35E1AF00A5C22B /* ContentView.swift */; };
 		6C04D6D22C35E1B100A5C22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C04D6D12C35E1B100A5C22B /* Assets.xcassets */; };
@@ -18,10 +17,10 @@
 		6C04D6E62C35FEBA00A5C22B /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C04D6E52C35FEBA00A5C22B /* Config.plist */; };
 		6C04D6E82C3601ED00A5C22B /* APIEndpointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6E72C3601ED00A5C22B /* APIEndpointProvider.swift */; };
 		6C04D6EA2C36158F00A5C22B /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6E92C36158F00A5C22B /* Manifest.swift */; };
+		6CB49CC22C36185600B54ACF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6CB49CC12C36185600B54ACF /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B60D9626A127B39497FA7AB /* Pods-NASARovers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NASARovers.release.xcconfig"; path = "Target Support Files/Pods-NASARovers/Pods-NASARovers.release.xcconfig"; sourceTree = "<group>"; };
 		6C04D6CA2C35E1AF00A5C22B /* NASARovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASARovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C04D6CD2C35E1AF00A5C22B /* NASARoversApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASARoversApp.swift; sourceTree = "<group>"; };
 		6C04D6CF2C35E1AF00A5C22B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,8 +32,6 @@
 		6C04D6E52C35FEBA00A5C22B /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		6C04D6E72C3601ED00A5C22B /* APIEndpointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpointProvider.swift; sourceTree = "<group>"; };
 		6C04D6E92C36158F00A5C22B /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
-		8FF658E95EAFFA437D7B273B /* Pods_NASARovers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NASARovers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C29A7625A893582769E2D5FD /* Pods-NASARovers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NASARovers.debug.xcconfig"; path = "Target Support Files/Pods-NASARovers/Pods-NASARovers.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,29 +39,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B262783864CD0F77644739E /* Pods_NASARovers.framework in Frameworks */,
+				6CB49CC22C36185600B54ACF /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3BEE2B9BB887B4B866CFE4E5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C29A7625A893582769E2D5FD /* Pods-NASARovers.debug.xcconfig */,
-				4B60D9626A127B39497FA7AB /* Pods-NASARovers.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		6C04D6C12C35E1AF00A5C22B = {
 			isa = PBXGroup;
 			children = (
 				6C04D6CC2C35E1AF00A5C22B /* NASARovers */,
 				6C04D6CB2C35E1AF00A5C22B /* Products */,
-				3BEE2B9BB887B4B866CFE4E5 /* Pods */,
-				D20294F2D2F00EEDD5BCB03F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,14 +119,6 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		D20294F2D2F00EEDD5BCB03F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8FF658E95EAFFA437D7B273B /* Pods_NASARovers.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -148,17 +126,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C04D6D82C35E1B100A5C22B /* Build configuration list for PBXNativeTarget "NASARovers" */;
 			buildPhases = (
-				DBF8B12476D6D4819F0B4591 /* [CP] Check Pods Manifest.lock */,
 				6C04D6C62C35E1AF00A5C22B /* Sources */,
 				6C04D6C72C35E1AF00A5C22B /* Frameworks */,
 				6C04D6C82C35E1AF00A5C22B /* Resources */,
-				1E21FBA3090F843FCB1FA0EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = NASARovers;
+			packageProductDependencies = (
+				6CB49CC12C36185600B54ACF /* Alamofire */,
+			);
 			productName = NASARovers;
 			productReference = 6C04D6CA2C35E1AF00A5C22B /* NASARovers.app */;
 			productType = "com.apple.product-type.application";
@@ -187,6 +166,9 @@
 				Base,
 			);
 			mainGroup = 6C04D6C12C35E1AF00A5C22B;
+			packageReferences = (
+				6CB49CC02C36185600B54ACF /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 6C04D6CB2C35E1AF00A5C22B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -208,48 +190,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1E21FBA3090F843FCB1FA0EE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NASARovers/Pods-NASARovers-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NASARovers/Pods-NASARovers-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NASARovers/Pods-NASARovers-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DBF8B12476D6D4819F0B4591 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NASARovers-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6C04D6C62C35E1AF00A5C22B /* Sources */ = {
@@ -390,13 +330,12 @@
 		};
 		6C04D6D92C35E1B100A5C22B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C29A7625A893582769E2D5FD /* Pods-NASARovers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NASARovers/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"NASARovers/SupportingFiles/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Y6293N9NZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -420,13 +359,12 @@
 		};
 		6C04D6DA2C35E1B100A5C22B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B60D9626A127B39497FA7AB /* Pods-NASARovers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NASARovers/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"NASARovers/SupportingFiles/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Y6293N9NZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -470,6 +408,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6CB49CC02C36185600B54ACF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6CB49CC12C36185600B54ACF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CB49CC02C36185600B54ACF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6C04D6C22C35E1AF00A5C22B /* Project object */;
 }

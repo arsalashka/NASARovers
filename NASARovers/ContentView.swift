@@ -8,7 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    let apiDataProvider = APIDataProvider()
     
+    init() {
+        apiDataProvider.getData(for: .manifests(rover: .curiosity)) { (data: Manifest) in
+            print(data.photoManifest.photos.count)
+        } errorHandler: { error in
+            print(error.description)
+        }
+    }
     
     var body: some View {
         VStack {
@@ -19,8 +27,4 @@ struct ContentView: View {
         }
         .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }
