@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C04D6CE2C35E1AF00A5C22B /* NASARoversApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6CD2C35E1AF00A5C22B /* NASARoversApp.swift */; };
-		6C04D6D02C35E1AF00A5C22B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6CF2C35E1AF00A5C22B /* ContentView.swift */; };
+		6C04D6D02C35E1AF00A5C22B /* NASARoversView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6CF2C35E1AF00A5C22B /* NASARoversView.swift */; };
 		6C04D6D22C35E1B100A5C22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C04D6D12C35E1B100A5C22B /* Assets.xcassets */; };
 		6C04D6D52C35E1B100A5C22B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C04D6D42C35E1B100A5C22B /* Preview Assets.xcassets */; };
 		6C04D6DD2C35E42100A5C22B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C04D6DC2C35E42100A5C22B /* APIError.swift */; };
@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		6C04D6CA2C35E1AF00A5C22B /* NASARovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASARovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C04D6CD2C35E1AF00A5C22B /* NASARoversApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASARoversApp.swift; sourceTree = "<group>"; };
-		6C04D6CF2C35E1AF00A5C22B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6C04D6CF2C35E1AF00A5C22B /* NASARoversView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASARoversView.swift; sourceTree = "<group>"; };
 		6C04D6D12C35E1B100A5C22B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C04D6D42C35E1B100A5C22B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6C04D6DC2C35E42100A5C22B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 				6C04D6E02C35E4A500A5C22B /* Services */,
 				6C04D6DB2C35E40C00A5C22B /* Models */,
 				6C04D6E42C35E75C00A5C22B /* SupportingFiles */,
-				6C04D6CF2C35E1AF00A5C22B /* ContentView.swift */,
+				6C04D6CF2C35E1AF00A5C22B /* NASARoversView.swift */,
 			);
 			path = NASARovers;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 			files = (
 				6C04D6EA2C36158F00A5C22B /* Manifest.swift in Sources */,
 				6C04D6E22C35E4BC00A5C22B /* Rover.swift in Sources */,
-				6C04D6D02C35E1AF00A5C22B /* ContentView.swift in Sources */,
+				6C04D6D02C35E1AF00A5C22B /* NASARoversView.swift in Sources */,
 				6C04D6CE2C35E1AF00A5C22B /* NASARoversApp.swift in Sources */,
 				6C04D6DD2C35E42100A5C22B /* APIError.swift in Sources */,
 				6C04D6E82C3601ED00A5C22B /* APIEndpointProvider.swift in Sources */,
