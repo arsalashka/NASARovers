@@ -7,23 +7,27 @@
 
 import Foundation
 
-// MARK: - Manifest
-struct Manifest: Codable {
-    let photoManifest: PhotoManifest
-
+// MARK: - ManifestResponse
+struct ManifestResponse: Codable {
+    let photoManifest: Manifest
+    
     enum CodingKeys: String, CodingKey {
         case photoManifest = "photo_manifest"
     }
 }
 
-// MARK: - PhotoManifest
-struct PhotoManifest: Codable {
+// MARK: - Manifest
+struct Manifest: Codable {
     let name, landingDate, launchDate, status: String
     let maxSol: Int
     let maxDate: String
     let totalPhotos: Int
-    let photos: [Photo]
-
+    let photos: [ManifestPhoto]
+    
+    var sortedPhotos: [ManifestPhoto] {
+        photos.reversed()
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name
         case landingDate = "landing_date"
@@ -36,27 +40,27 @@ struct PhotoManifest: Codable {
     }
 }
 
-// MARK: - Photo
-struct Photo: Codable {
+extension Manifest {
+    var rover: Rover { Rover(rawValue: name.lowercased()) ?? .opportunity }
+}
+
+// MARK: - ManifestPhoto
+struct ManifestPhoto: Codable {
     let sol: Int
     let earthDate: String
     let totalPhotos: Int
-    let cameras: [Camera]
-
+    let cameras: [String]
+    
+    var pagesCount: Int {
+        var pages = totalPhotos / 25
+        pages += totalPhotos % 25 == 0 ? 0 : 1
+        return pages
+    }
+    
     enum CodingKeys: String, CodingKey {
         case sol
         case earthDate = "earth_date"
         case totalPhotos = "total_photos"
         case cameras
     }
-}
-
-enum Camera: String, Codable {
-    case chemcam = "CHEMCAM"
-    case fhaz = "FHAZ"
-    case mahli = "MAHLI"
-    case mardi = "MARDI"
-    case mast = "MAST"
-    case navcam = "NAVCAM"
-    case rhaz = "RHAZ"
 }
