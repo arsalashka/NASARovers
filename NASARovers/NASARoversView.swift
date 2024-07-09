@@ -8,7 +8,31 @@
 import SwiftUI
 
 struct NASARoversView: View {
-    private let apiDataProvider = APIDataProvider()
+    private let photoProvider: PhotosProvider
+    
+    init(for rover: Rover) {
+        self.photoProvider = PhotosProviderImpl(for: rover)
+        
+        photoProvider.fetchPhoto { [self] dict in
+            print(dict.count, "\n\n")
+            
+            self.photoProvider.fetchPhoto { [self] dict in
+                print(dict.count, "\n\n")
+                
+                self.photoProvider.fetchPhoto { [self] dict in
+                    print(dict.count, "\n\n")
+                    
+                    self.photoProvider.fetchPhoto { [self] dict in
+                        print(dict.count, "\n\n")
+                        
+                        self.photoProvider.fetchPhoto { dict in
+                            print(dict.count, "\n\n")
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     var body: some View {
         VStack {
@@ -17,13 +41,13 @@ struct NASARoversView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
         }
-        .onAppear() {
-            apiDataProvider.getData(for: .manifests(rover: .curiosity)) { (data: Manifest) in
-                print(data.photoManifest.photos.count)
-            } errorHandler: { error in
-                print(error.description)
-            }
-        }
+//        .onAppear() {
+//            apiDataProvider.getData(for: .manifests(rover: .curiosity)) { (data: Manifest) in
+//                print(data.photoManifest.photos.count)
+//            } errorHandler: { error in
+//                print(error.description)
+//            }
+//        }
         .padding()
     }
 }
