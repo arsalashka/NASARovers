@@ -8,46 +8,20 @@
 import SwiftUI
 
 struct NASARoversView: View {
-    private let photoProvider: PhotosProvider
-    
-    init(for rover: Rover) {
-        self.photoProvider = PhotosProviderImpl(for: rover)
-        
-        photoProvider.fetchPhoto { [self] dict in
-            print(dict.count, "\n\n")
-            
-            self.photoProvider.fetchPhoto { [self] dict in
-                print(dict.count, "\n\n")
-                
-                self.photoProvider.fetchPhoto { [self] dict in
-                    print(dict.count, "\n\n")
-                    
-                    self.photoProvider.fetchPhoto { [self] dict in
-                        print(dict.count, "\n\n")
-                        
-                        self.photoProvider.fetchPhoto { dict in
-                            print(dict.count, "\n\n")
-                        }
-                    }
-                }
-            }
-        }
-    }
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            Color($viewModel.photoDict.wrappedValue.isEmpty ? .white : .green)
+                .ignoresSafeArea()
+            
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
+            }
+            .padding()
         }
-//        .onAppear() {
-//            apiDataProvider.getData(for: .manifests(rover: .curiosity)) { (data: Manifest) in
-//                print(data.photoManifest.photos.count)
-//            } errorHandler: { error in
-//                print(error.description)
-//            }
-//        }
-        .padding()
     }
 }
