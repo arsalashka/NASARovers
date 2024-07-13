@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  PhotoViewModel.swift
 //  NASARovers
 //
 //  Created by Arsalan on 10.07.2024.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class ViewModel: ObservableObject {
+final class PhotoViewModel: ObservableObject {
     private let rover: Rover
     private let photoProvider: PhotosProvider
     
@@ -19,7 +19,7 @@ final class ViewModel: ObservableObject {
         self.rover = rover
         self.photoProvider = PhotosProviderImpl(for: rover)
         
-        bind()
+//        bind()
     }
     
     func bind() {

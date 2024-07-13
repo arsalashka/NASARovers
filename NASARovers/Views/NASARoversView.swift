@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NASARoversView: View {
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: PhotoViewModel
     
     var body: some View {
         ZStack {
@@ -21,6 +21,7 @@ struct NASARoversView: View {
                     .foregroundStyle(.tint)
                 Text("Hello, world!")
             }
+            .onAppear(perform: viewModel.bind)
             .padding()
         }
     }
