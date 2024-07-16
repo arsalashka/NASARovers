@@ -8,11 +8,12 @@
 import Foundation
 import Combine
 
-final class PhotoViewModel: ObservableObject {
+final class RoverSelectionViewModel: ObservableObject {
     private let rover: Rover
     private let photoProvider: PhotosProvider
     
     @Published var photoDict: [Int: String] = [:]
+    @Published var selectedRover: Rover = .opportunity
     private var cancellables = Set<AnyCancellable>()
     
     init(for rover: Rover) {
