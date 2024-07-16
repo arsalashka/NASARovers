@@ -7,8 +7,13 @@
 
 import SwiftUI
 
-extension UIScreen {
-    static let width = UIScreen.main.bounds.width
+private enum RoverSelectionViewConstants: String {
+    case fetchPhotoFromRover = "Fetch photo from rover"
+    case fetchAll = "fetch All"
+    case calendar = "calendar"
+    case mission = "mission"
+    case more = "more"
+    case ellipsisCircle = "ellipsis.circle"
 }
 
 //  MARK: - RoverSelectionView
@@ -32,7 +37,7 @@ struct RoverSelectionView: View {
                     }
                     .frame(UIScreen.width, UIScreen.width * 1.25)
                     
-                    Text("Fetch photo from rover".uppercased())
+                    Text(RoverSelectionViewConstants.fetchPhotoFromRover.rawValue.uppercased())
                         .padding(.horizontal, 16)
                         .padding(.top, 12)
                         .font(.system(size: 12))
@@ -41,7 +46,7 @@ struct RoverSelectionView: View {
                     
                     TabView(selection: $viewModel.selectedRover) {
                         ForEach(Rover.allCases, id: \.self) { rover in
-                            RoverInfoView(rover: rover)
+                            RoverInfoView(rover: rover, viewModel: viewModel)
                         }
                     }
                     .tabViewStyle(PageTabViewStyle.init(indexDisplayMode: .never))
@@ -57,7 +62,7 @@ struct RoverSelectionView: View {
                     Button {
                         
                     } label: {
-                        Text(String(localized: "fetch All").uppercased())
+                        Text(RoverSelectionViewConstants.fetchAll.rawValue.uppercased())
                             .font(.system(size: 15, weight: .bold) )
                             .frame(width: UIScreen.width - 200)
                             .foregroundColor(.white)
@@ -70,11 +75,8 @@ struct RoverSelectionView: View {
                     Button {
                         
                     } label: {
-                        Image(systemName: "calendar")
-                            .renderingMode(.template)
-                            .resizable()
+                        SFSymbolImage(systemName: RoverSelectionViewConstants.calendar.rawValue)
                             .scaledToFill()
-                            .frame(20)
                             .foregroundColor(.white)
                             .padding(.vertical)
                             .padding(.horizontal, 25)
@@ -98,6 +100,7 @@ struct RoverSelectionView: View {
 //  MARK: - RoverInfoView
 fileprivate struct RoverInfoView: View {
     var rover: Rover
+    var viewModel: RoverSelectionViewModel
     
     var body: some View {
         VStack {
@@ -108,13 +111,13 @@ fileprivate struct RoverInfoView: View {
                 .frame(width: UIScreen.width, alignment: .leading)
                 .foregroundColor(.black)
             
-            Text("mission".uppercased())
+            Text(RoverSelectionViewConstants.mission.rawValue.uppercased())
                 .font(.system(size: 12, weight: .semibold))
                 .padding(.horizontal, 16)
                 .frame(width: UIScreen.width, alignment: .leading)
                 .foregroundColor(.gray)
             
-            Text(getMissionInfo(for: rover))
+            Text(viewModel.getMissionInfo(for: rover))
                 .font(.system(size: 12, weight: .semibold))
                 .padding(.top, 3)
                 .padding(.horizontal, 16)
@@ -126,12 +129,10 @@ fileprivate struct RoverInfoView: View {
                 
             } label: {
                 HStack {
-                    Text("More".uppercased())
+                    Text(RoverSelectionViewConstants.more.rawValue.uppercased())
                         .font(.system(size: 12))
                     
-                    Image(systemName: "ellipsis.circle")
-                        .renderingMode(.template)
-                        .frame(width: 20, height: 20)
+                    SFSymbolImage(systemName: RoverSelectionViewConstants.ellipsisCircle.rawValue)
                 }
             }
             .foregroundColor(.gray)
@@ -142,28 +143,7 @@ fileprivate struct RoverInfoView: View {
         }
     }
     
-    private func getMissionInfo(for rover: Rover) -> String {
-        switch rover {
-        case .curiosity:
-            return """
-            Part of NASA's Mars Science Laboratory mission, Curiosity is the largest and most capable rover ever sent to Mars. It launched Nov. 26, 2011 and landed on Mars at 10:32 p.m.  PDT on Aug. 5, 2012 - (1:32•a.m. EDT on Aug. 6, 2012).
-            
-            Curiosity set out to answer the question: Did Mars ever have the right environmental conditions to support small life forms called microbes? Early in its mission, Curiosity's scientific tools found chemical and mineral evidence of past habitable environments on Mars. It continues to explore the rock record from a time when Mars could have been home to microbial life.
-            """
-        case .opportunity:
-            return """
-            Opportunity was the second of the two rovers launched in 2003 to land on Mars and begin traversing the Red Planet in search of signs of ancient water. The rover explored the Martian terrain for almost 15-years, far outlasting her planned 90-day mission.
-            
-            After landing on Mars in 2004, • Opportunity-made a number of discoveries about the Red Planet-including dramatic evidence that long ago at least one area of Mars stayed wet for an extended period and that conditions could have been suitable for sustaining microbial life.
-            """
-        case .spirit:
-            return """
-            One of two rovers launched in 2003 to explore Mars and search for signs of past life, Spirit far outlasted her planned 90-day mission, lasting over six years. Among her myriad discoveries, Spirit found evidence that Mars was once much wetter than it is today and helped scientists better understand the Martian wind.
-            
-            In May 2009, the rover became embedded-in soft soil at a site called "Troy" with only five working wheels to aid in the rescue effort. After months of testing and carefully planned maneuvers, NASA ended efforts to free the rover and eventually ended the mission on May 25, 2011.
-            """
-        }
-    }
+    
 }
 
 //  MARK: - ClipAnimatedShape
