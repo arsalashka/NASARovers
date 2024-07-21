@@ -45,8 +45,8 @@ struct RoverSelectionView: View {
                         .foregroundColor(.black)
                     
                     TabView(selection: $viewModel.selectedRover) {
-                        ForEach(Rover.allCases, id: \.self) { rover in
-                            RoverInfoView(rover: rover, viewModel: viewModel)
+                        ForEach(Rover.allCases, id: \.self) {
+                            RoverInfoView(rover: $0, viewModel: viewModel)
                         }
                     }
                     .tabViewStyle(PageTabViewStyle.init(indexDisplayMode: .never))
@@ -91,9 +91,9 @@ struct RoverSelectionView: View {
             }
         }
         .ignoresSafeArea(.all)
-        .onAppear {
-            viewModel.bind()
-        }
+//        .onAppear {
+//            viewModel.bind()
+//        }
     }
 }
 

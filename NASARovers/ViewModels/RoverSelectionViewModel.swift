@@ -11,16 +11,17 @@ import Combine
 final class RoverSelectionViewModel: ObservableObject {
     private let rover: Rover
     private let photoProvider: PhotosProvider
+    var roverInfo: RoverInfo?
     
     @Published var photoDict: [Int: String] = [:]
-    @Published var selectedRover: Rover = .opportunity
+    @Published var selectedRover: Rover = .curiosity
     private var cancellables = Set<AnyCancellable>()
     
     init(for rover: Rover) {
         self.rover = rover
         self.photoProvider = PhotosProviderImpl(for: rover)
         
-//        bind()
+        bind()
     }
     
     func bind() {
@@ -35,6 +36,9 @@ final class RoverSelectionViewModel: ObservableObject {
                 print(photos.count)
                 
                 photoDict = photos
+                
+                roverInfo = photoProvider.getRoverData()
+                print("roverData:", roverInfo ?? "nil")
                 
                 photoProvider.fetchPhoto()
                     .sink { completion in

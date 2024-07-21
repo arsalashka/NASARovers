@@ -33,7 +33,7 @@ final class APIDataProvider {
     private let endpointProvider = APIEndpointProvider()
 
     func request<T: Decodable>(with endpoint: Endpoint) -> AnyPublisher<T, AppError> {
-        print(endpointProvider.getURL(endpoint: endpoint))
+        print("\(endpoint):\n", endpointProvider.getURL(endpoint: endpoint))
         return URLSession.shared
             .dataTaskPublisher(for: endpointProvider.getURL(endpoint: endpoint))
             .subscribe(on: DispatchQueue.global(qos: .background))
