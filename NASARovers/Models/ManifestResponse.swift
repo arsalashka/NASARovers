@@ -29,7 +29,7 @@ struct Manifest: Codable {
     }
     
     var rover: Rover {
-        Rover(rawValue: name.lowercased()) ?? .opportunity
+        Rover(rawValue: name.lowercased()) ?? .curiosity
     }
     
     enum CodingKeys: String, CodingKey {

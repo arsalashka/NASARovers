@@ -12,6 +12,7 @@ protocol PhotosProvider {
     func fetchPhoto() -> AnyPublisher<[Int: String], AppError>
     func addToFavorite(_ photo: Photo)
     func removeFromFavorite(_ photo: Photo)
+    func getRoverData() -> RoverInfo?
 }
 
 final class PhotosProviderImpl: PhotosProvider {
@@ -101,5 +102,25 @@ final class PhotosProviderImpl: PhotosProvider {
         var favoritePhotoIDs = favoritePhotoIDs
         favoritePhotoIDs.remove(photo.id)
         udStorageManager.set(object: favoritePhotoIDs, forKey: .favoritePhotos)
+    }
+    
+    func getRoverData() -> RoverInfo? {
+        guard let manifest else { return nil }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let maxDate = dateFormatter.date(from: manifest.maxDate)!
+        let landingDate = dateFormatter.date(from: manifest.landingDate)!
+        
+        let components = Calendar.current.dateComponents([.day], from: landingDate, to: maxDate)
+        
+        let roverInfo = RoverInfo(
+            day: String(components.day!),
+            sol: String(manifest.maxSol),
+            photos: String(manifest.sortedPhotos.first?.totalPhotos ?? 0)
+        )
+        
+        return roverInfo
     }
 }
