@@ -160,21 +160,21 @@ struct ClipAnimatedShape: ViewModifier {
                 .clipShape(CuriositySegment())
                 .contentShape(CuriositySegment())
                 .scaleEffect(rover == selectedRover ? 1.2 : 1)
-                .animation(.linear(duration: 0.15))
+                .animation(.linear(duration: 0.15), value: offset)
                 .offset(offset * 0.07, -offset * 1.2)
         case .opportunity:
             content
                 .clipShape(OpportunitySegment())
                 .contentShape(OpportunitySegment())
                 .scaleEffect(rover == selectedRover ? 1.2 : 1)
-                .animation(.linear(duration: 0.15))
+                .animation(.linear(duration: 0.15), value: offset)
                 .offset(-offset * 0.2, -offset * 1.3)
         case .spirit:
             content
                 .clipShape(SpiritSegment())
                 .contentShape(SpiritSegment())
                 .scaleEffect(rover == selectedRover ? 1.2 : 1)
-                .animation(.linear(duration: 0.15))
+                .animation(.linear(duration: 0.15), value: offset)
                 .offset(-offset * 4, -offset * 5)
         }
     }

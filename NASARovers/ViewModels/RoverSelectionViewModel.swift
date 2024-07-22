@@ -21,7 +21,7 @@ final class RoverSelectionViewModel: ObservableObject {
         self.rover = rover
         self.photoProvider = PhotosProviderImpl(for: rover)
         
-        bind()
+//        bind()
     }
     
     func bind() {

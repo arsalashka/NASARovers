@@ -9,7 +9,7 @@ import SwiftUI
 
 enum RoverViewConstants: String {
     case curiosityBackground
-    case xCircle = "x.circle"
+    case xMark = "xmark"
     case nasaMarsRover = "Nasa Mars Rover"
 }
 
@@ -36,10 +36,10 @@ struct RoverView: View {
                     Button {
                         print("Button Taped")
                     } label: {
-                        SFSymbolImage(systemName: RoverViewConstants.xCircle.rawValue)
+                        SFSymbolImage(systemName: RoverViewConstants.xMark.rawValue)
                             .foregroundColor(.white)
-                            .frame(50)
-                            .font(.system(size: 30, weight: .semibold))
+                            .frame(width: 50, height: 50)
+                            .font(.system(size: 24, weight: .regular))
                             .padding(.trailing, 3)
                     }
                 }
@@ -63,6 +63,9 @@ struct RoverView: View {
             }
             .shadow(color: .black, radius: 5, x: 2, y: 3)
             .safeAreaPadding(.top, 30)
+        }
+        .onAppear {
+            viewModel.bind()
         }
     }
 }
