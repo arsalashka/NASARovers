@@ -5,17 +5,17 @@
 //  Created by Arsalan on 10.07.2024.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 
 final class RoverSelectionViewModel: ObservableObject {
     private let rover: Rover
     private let photoProvider: PhotosProvider
-    var roverInfo: RoverInfo?
+    private var cancellables = Set<AnyCancellable>()
+    var roverInfo: RoverInfo = RoverInfo(day: "--", sol: "--", photos: "--")
     
     @Published var photoDict: [Int: String] = [:]
     @Published var selectedRover: Rover = .curiosity
-    private var cancellables = Set<AnyCancellable>()
     
     init(for rover: Rover) {
         self.rover = rover
@@ -37,8 +37,8 @@ final class RoverSelectionViewModel: ObservableObject {
                 
                 photoDict = photos
                 
-                roverInfo = photoProvider.getRoverData()
-                print("roverData:", roverInfo ?? "nil")
+                self.roverInfo = photoProvider.getRoverData()
+                print("🟠 roverData:", roverInfo)
                 
                 photoProvider.fetchPhoto()
                     .sink { completion in

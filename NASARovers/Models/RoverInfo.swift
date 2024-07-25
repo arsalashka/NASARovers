@@ -8,5 +8,5 @@
 import Foundation
 
 struct RoverInfo {
-    let day, sol, photos: String
+    var day, sol, photos: String
 }

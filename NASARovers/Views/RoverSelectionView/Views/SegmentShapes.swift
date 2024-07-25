@@ -15,7 +15,7 @@ struct Layout {
 //  MARK: - OpportunitySegment
 struct OpportunitySegment: Shape {
     func path(in rect: CGRect) -> Path {
-        var grid = Layout.layoutConfig.layout(in: rect)
+        let grid = Layout.layoutConfig.layout(in: rect)
         var path = Path()
         
         path.move(to: grid[4, 4])

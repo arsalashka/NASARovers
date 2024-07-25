@@ -21,79 +21,81 @@ struct RoverSelectionView: View {
     @ObservedObject var viewModel: RoverSelectionViewModel
     
     var body: some View {
-        ZStack {
-            ScrollView(showsIndicators: false) {
+        NavigationView {
+            ZStack {
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        ZStack {
+                            ForEach(Rover.allCases, id: \.self) { rover in
+                                Image(rover.rawValue)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .clipSegment(for: rover, and: viewModel.selectedRover)
+                                    .onTapGesture {
+                                        withAnimation { viewModel.selectedRover = rover }
+                                    }
+                            }
+                        }
+                        .frame(UIScreen.width, UIScreen.width * 1.25)
+                        
+                        Text(RoverSelectionViewConstants.fetchPhotoFromRover.rawValue.uppercased())
+                            .padding(.horizontal, 16)
+                            .padding(.top, 12)
+                            .font(.system(size: 12))
+                            .frame(width: UIScreen.width, alignment: .leading)
+                            .foregroundColor(.black)
+                        
+                        TabView(selection: $viewModel.selectedRover) {
+                            ForEach(Rover.allCases, id: \.self) {
+                                RoverInfoView(rover: $0, viewModel: viewModel)
+                            }
+                        }
+                        .tabViewStyle(PageTabViewStyle.init(indexDisplayMode: .never))
+                        .frame(width: UIScreen.width, height: 250)
+                    }
+                    Spacer()
+                        .height(100)
+                }
                 VStack {
-                    ZStack {
-                        ForEach(Rover.allCases, id: \.self) { rover in
-                            Image(rover.rawValue)
-                                .resizable()
-                                .scaledToFit()
-                                .clipSegment(for: rover, and: viewModel.selectedRover)
-                                .onTapGesture {
-                                    withAnimation { viewModel.selectedRover = rover }
-                                }
+                    Spacer()
+                    
+                    HStack(spacing: 20) {
+                        Button {
+                            
+                        } label: {
+                            Text(RoverSelectionViewConstants.fetchAll.rawValue.uppercased())
+                                .font(.system(size: 15, weight: .bold) )
+                                .frame(width: UIScreen.width - 200)
+                                .foregroundColor(.white)
+                                .padding()
                         }
-                    }
-                    .frame(UIScreen.width, UIScreen.width * 1.25)
-                    
-                    Text(RoverSelectionViewConstants.fetchPhotoFromRover.rawValue.uppercased())
-                        .padding(.horizontal, 16)
-                        .padding(.top, 12)
-                        .font(.system(size: 12))
-                        .frame(width: UIScreen.width, alignment: .leading)
-                        .foregroundColor(.black)
-                    
-                    TabView(selection: $viewModel.selectedRover) {
-                        ForEach(Rover.allCases, id: \.self) {
-                            RoverInfoView(rover: $0, viewModel: viewModel)
+                        .backgroundColor(.blue)
+                        .frame(height: 50)
+                        .clipCapsule()
+                        
+                        Button {
+                            
+                        } label: {
+                            SFSymbolImage(systemName: RoverSelectionViewConstants.calendar.rawValue)
+                                .scaledToFill()
+                                .foregroundColor(.white)
+                                .padding(.vertical)
+                                .padding(.horizontal, 25)
                         }
+                        .backgroundColor(.blue)
+                        .frame(height: 50)
+                        .clipCapsule()
                     }
-                    .tabViewStyle(PageTabViewStyle.init(indexDisplayMode: .never))
-                    .frame(width: UIScreen.width, height: 250)
+                    .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: -3)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 30)
                 }
-                Spacer()
-                    .height(100)
             }
-            VStack {
-                Spacer()
-                
-                HStack(spacing: 20) {
-                    Button {
-                        
-                    } label: {
-                        Text(RoverSelectionViewConstants.fetchAll.rawValue.uppercased())
-                            .font(.system(size: 15, weight: .bold) )
-                            .frame(width: UIScreen.width - 200)
-                            .foregroundColor(.white)
-                            .padding()
-                    }
-                    .backgroundColor(.blue)
-                    .frame(height: 50)
-                    .clipCapsule()
-                    
-                    Button {
-                        
-                    } label: {
-                        SFSymbolImage(systemName: RoverSelectionViewConstants.calendar.rawValue)
-                            .scaledToFill()
-                            .foregroundColor(.white)
-                            .padding(.vertical)
-                            .padding(.horizontal, 25)
-                    }
-                    .backgroundColor(.blue)
-                    .frame(height: 50)
-                    .clipCapsule()
-                }
-                .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: -3)
-                .padding(.horizontal, 20)
-                .padding(.bottom, 30)
-            }
+            .ignoresSafeArea(.all)
         }
-        .ignoresSafeArea(.all)
-//        .onAppear {
-//            viewModel.bind()
-//        }
+        .onAppear {
+            viewModel.bind()
+        }
     }
 }
 
@@ -129,10 +131,14 @@ fileprivate struct RoverInfoView: View {
                 
             } label: {
                 HStack {
-                    Text(RoverSelectionViewConstants.more.rawValue.uppercased())
-                        .font(.system(size: 12))
-                    
-                    SFSymbolImage(systemName: RoverSelectionViewConstants.ellipsisCircle.rawValue)
+                    NavigationLink {
+                        RoverView(viewModel: viewModel)
+                    } label: {
+                        Text(RoverSelectionViewConstants.more.rawValue.uppercased())
+                            .font(.system(size: 12))
+                        
+                        SFSymbolImage(systemName: RoverSelectionViewConstants.ellipsisCircle.rawValue)
+                    }
                 }
             }
             .foregroundColor(.gray)
@@ -142,8 +148,6 @@ fileprivate struct RoverInfoView: View {
             Spacer()
         }
     }
-    
-    
 }
 
 //  MARK: - ClipAnimatedShape

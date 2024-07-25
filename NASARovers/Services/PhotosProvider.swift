@@ -12,7 +12,7 @@ protocol PhotosProvider {
     func fetchPhoto() -> AnyPublisher<[Int: String], AppError>
     func addToFavorite(_ photo: Photo)
     func removeFromFavorite(_ photo: Photo)
-    func getRoverData() -> RoverInfo?
+    func getRoverData() -> RoverInfo
 }
 
 final class PhotosProviderImpl: PhotosProvider {
@@ -104,8 +104,11 @@ final class PhotosProviderImpl: PhotosProvider {
         udStorageManager.set(object: favoritePhotoIDs, forKey: .favoritePhotos)
     }
     
-    func getRoverData() -> RoverInfo? {
-        guard let manifest else { return nil }
+    func getRoverData() -> RoverInfo {
+        guard let manifest else {
+            print("🔴 Could not decode manifest")
+            return RoverInfo(day: "--", sol: "--", photos: "--")
+        }
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -120,6 +123,8 @@ final class PhotosProviderImpl: PhotosProvider {
             sol: String(manifest.maxSol),
             photos: String(manifest.sortedPhotos.first?.totalPhotos ?? 0)
         )
+        
+        print("🟢Rover info: ", roverInfo)
         
         return roverInfo
     }
